@@ -5,6 +5,9 @@
 .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
     color:#e20613;
 }
+.nav-link:hover {
+    color:#e20613;
+}
 ::ng-deep .mat-form-field-wrapper{
     margin-bottom: -0.65em !important;
  }
