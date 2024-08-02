@@ -1,35 +1,53 @@
 ::ng-deep .mat-tab-label {
-    padding: 0px !important;
-    justify-content: left !important;
-    }
-    
-    
-    ::ng-deep mat-form-field.mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix  { padding: 0.6em 0px !important }
-    ::ng-deep mat-form-field.mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix > span.mat-form-field-label-wrapper { top: -1.3em !important }
-    
-    ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform: translateY(-1.1em) scale(.75) !important;
-    width: 133.33333% !important;
-    }
+  padding: 0px !important;
+  justify-content: left !important;
+}
+
+::ng-deep
+  mat-form-field.mat-form-field.mat-form-field-appearance-outline
+  > div.mat-form-field-wrapper
+  > div.mat-form-field-flex
+  > div.mat-form-field-infix {
+  padding: 0.6em 0px !important;
+}
+::ng-deep
+  mat-form-field.mat-form-field.mat-form-field-appearance-outline
+  > div.mat-form-field-wrapper
+  > div.mat-form-field-flex
+  > div.mat-form-field-infix
+  > span.mat-form-field-label-wrapper {
+  top: -1.3em !important;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  transform: translateY(-1.1em) scale(0.75) !important;
+  width: 133.33333% !important;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.feature-custom {
+  text-align: center;
+  border-radius: 200px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 20px 0;
+  list-style: none;
+  color: white;
+  display: flex;
+}
+.carousel-image {
+  height: 300px;
+  object-fit: cover;
   
-      .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-      }
-
-
-      .feature-custom{
-        text-align: center;
-      border-radius: 200px;
-      background: #fff;
-      box-shadow: 0 5px 10px rgba(0,0,0,.2);
-      position: relative;
-      overflow: hidden;
-      margin: 0;
-      padding: 20px 0;
-      list-style: none;
-      color: white;
-      display: flex;
-      }
+}
