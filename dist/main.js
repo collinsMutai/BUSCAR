@@ -1252,6 +1252,7 @@ class PaymentsComponent {
             "uuid": this.ref_no,
             "requestType": "ticket",
         };
+        console.log('data', data);
         this.service.checkMpesaPayment(data).subscribe((res) => {
             if (res.isSuccess) {
                 this.spinner.hide();
@@ -2229,7 +2230,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    token: '11065004-E295-494E-BD39-02264082B68E'
+    token: 'A976FD00-A1B7-4383-8FD9-213A21684DD5',
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -8897,7 +8898,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
 const environment = {
     production: true,
-    token: '11065004-E295-494E-BD39-02264082B68E'
+    token: 'A976FD00-A1B7-4383-8FD9-213A21684DD5',
 };
 
 

@@ -163,6 +163,8 @@ checkMpesaPayment(){
     "uuid":this.ref_no,
     "requestType": "ticket",
   }
+  console.log('data', data);
+  
   this.service.checkMpesaPayment(data).subscribe((res)=>{
     if(res.isSuccess){
       this.spinner.hide()

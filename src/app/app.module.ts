@@ -44,6 +44,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { DatePipe } from '@angular/common';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { TripReviewComponent } from './views/trip-review/trip-review.component';
+import { GalleryComponent } from './views/gallery/gallery.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { TripReviewComponent } from './views/trip-review/trip-review.component';
     OnwardTripComponent,
     PrivacyComponent,
     RegisterComponent,
-    TripReviewComponent
+    TripReviewComponent,
+    GalleryComponent
     ],
   imports: [
     BrowserModule,

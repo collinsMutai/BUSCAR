@@ -1,46 +1,40 @@
 .container-fluid {
-    padding: 1rem;
-    color: white;
+  padding: 1rem;
+  color: white;
 
+  .container {
+    .row {
+      min-height: 100px;
+      .col {
+        text-align: left;
 
-
-    .container {
-        .row {
-            min-height: 100px;
-            .col {
-                text-align: left;
-
-                small {
-                    font-size: small;
-                    color: white !important;
-                }
-            }
+        small {
+          font-size: small;
+          color: white !important;
         }
-
-
+      }
     }
+  }
 }
 
 .top {
-    background-color: #a30d2c;
+  background-color: #a61917;
 
-    li {
-        cursor: pointer;
+  li {
+    cursor: pointer;
+  }
+
+  .icons {
+    display: flex;
+    gap: 1rem;
+
+    .icon {
+      font-size: 1.3rem;
+      cursor: pointer;
     }
-
-    .icons {
-        display: flex;
-        gap: 1rem;
-
-
-        .icon {
-            font-size: 1.3rem;
-            cursor: pointer;
-        }
-    }
+  }
 }
 
 .bottom {
-    background-color: #0a2472;
-    
+  background-color: #0a2472;
 }

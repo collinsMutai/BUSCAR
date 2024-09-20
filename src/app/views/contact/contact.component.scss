@@ -1,19 +1,83 @@
-
 ::ng-deep .mat-tab-label {
-    padding: 0px !important;
-    justify-content: left !important;
+  padding: 0px !important;
+  justify-content: left !important;
 }
 
-
-::ng-deep mat-form-field.mat-form-field.mat-form-field-appearance-outline>div.mat-form-field-wrapper>div.mat-form-field-flex>div.mat-form-field-infix {
-    padding: 0.6em 0px !important
+::ng-deep
+  mat-form-field.mat-form-field.mat-form-field-appearance-outline
+  > div.mat-form-field-wrapper
+  > div.mat-form-field-flex
+  > div.mat-form-field-infix {
+  padding: 0.6em 0px !important;
 }
 
-::ng-deep mat-form-field.mat-form-field.mat-form-field-appearance-outline>div.mat-form-field-wrapper>div.mat-form-field-flex>div.mat-form-field-infix>span.mat-form-field-label-wrapper {
-    top: -1.3em !important
+::ng-deep
+  mat-form-field.mat-form-field.mat-form-field-appearance-outline
+  > div.mat-form-field-wrapper
+  > div.mat-form-field-flex
+  > div.mat-form-field-infix
+  > span.mat-form-field-label-wrapper {
+  top: -1.3em !important;
 }
 
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform: translateY(-1.1em) scale(.75) !important;
-    width: 133.33333% !important;
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  transform: translateY(-1.1em) scale(0.75) !important;
+  width: 133.33333% !important;
+}
+
+.blog-section {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+mat-form-field {
+  transition: all 0.3s ease;
+}
+
+mat-form-field:hover,
+mat-form-field.mat-focused {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mat-form-field-label {
+  transition: all 0.3s ease;
+}
+
+mat-form-field.mat-focused .mat-form-field-label {
+  transform: translateY(-1.1em) scale(0.75);
+  color: #a9010e;
+}
+
+.sendMessageBtn {
+  background-color: #a61917;
+  color: #fff;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sendMessageBtn:hover {
+  background-color: #a32320;
+  transform: scale(1.05);
+}
+
+svg{
+  color: #a9010e;
 }
