@@ -17,20 +17,40 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class GalleryComponent implements OnInit {
   images = [
     {
-      src: '../../../assets/Banner/Buscar Banner 400px by 1600px-01.png',
-      alt: 'Image 1',
+      src: '../../../assets/Buscar Bus Images/Buscar Kenya luxury buses.jpg',
+      alt: 'Buscar Kenya luxury buses',
     },
     {
-      src: '../../../assets/Banner/Buscar Web Banners 900px by 400px-01.png',
-      alt: 'Image 2',
+      src: '../../../assets/Buscar Bus Images/Buscar Malindi to Nairobi.jpg',
+      alt: 'Buscar Malindi to Nairobi',
     },
     {
-      src: '../../../assets/Banner/Buscar Banner 400px by 1600px-01.png',
-      alt: 'Image 3',
+      src: '../../../assets/Buscar Bus Images/Buscar Mombasa to Nairobi.jpg',
+      alt: 'Buscar Mombasa to Nairobi',
     },
     {
-      src: '../../../assets/Banner/Buscar Banner 400px by 1600px-01.png',
-      alt: 'Image 4',
+      src: '../../../assets/Buscar Bus Images/Mombasa bus travel.jpg',
+      alt: 'Mombasa bus travel',
+    },
+    {
+      src: '../../../assets/Buscar Bus Images/Malindi bus services.jpg',
+      alt: 'Malindi bus services',
+    },
+    {
+      src: '../../../assets/Buscar Bus Images/Kampala bus connection.jpg',
+      alt: 'Kampala bus connection',
+    },
+    {
+      src: '../../../assets/Buscar Bus Images/Kenya to Uganda bus travel.jpg',
+      alt: 'Kenya to Uganda bus travel',
+    },
+    {
+      src: '../../../assets/Buscar Bus Images/Buscar Nairobi contact.jpg',
+      alt: 'Buscar Nairobi contact',
+    },
+    {
+      src: '../../../assets/Buscar Bus Images/Mombasa Buscar office.jpg',
+      alt: 'Mombasa Buscar office',
     },
   ];
 
