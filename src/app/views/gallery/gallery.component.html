@@ -12,17 +12,12 @@
 
 <!-- Modal -->
 <div [ngClass]="{ modal: true, show: isModalOpen }" (click)="closeModal()">
-    <span class="close" (click)="closeModal()">&times;</span>
+  <span class="close" (click)="closeModal()">&times;</span>
   <div class="modal-content" (click)="$event.stopPropagation()">
     <div class="carousel">
       <div class="carousel-inner">
         <div *ngFor="let img of images; let i = index" [ngClass]="{'active': selectedImageIndex === i}">
-          <img
-            *ngIf="selectedImageIndex === i"
-            [src]="img.src"
-            [alt]="img.alt"
-            class="modal-image"
-          />
+          <img *ngIf="selectedImageIndex === i" [src]="img.src" [alt]="img.alt" class="modal-image" />
         </div>
       </div>
       <a class="carousel-control-prev" (click)="prevImage()">&lt;</a>

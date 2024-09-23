@@ -1,18 +1,19 @@
 <app-header></app-header>
 
-<div class="container"  style="margin-top:-40px;padding-top:5em;padding-bottom: 0 !important;">
-
+<div
+  class="container"
+  style="margin-top: -40px; padding-top: 5em; padding-bottom: 0 !important"
+>
   <div class="row mb-2">
     <div class="col-sm-3">
-      From  <span  style="font-weight: 800;"> {{params.source_city}}</span>
+      From <span style="font-weight: 800"> {{ params.source_city }}</span>
     </div>
     <div class="col-sm-3">
-      To  <span  style="font-weight: 800;">{{params.dest_city}}</span>
+      To <span style="font-weight: 800">{{ params.dest_city }}</span>
     </div>
   </div>
 
-
-  <div class="card custom-card ">
+  <div class="card custom-card">
     <!-- <div class="card-header" style="font-weight: 800;">
       {{params.source_city}} <i class="fa-solid fa-chevron-right"></i> {{params.dest_city}}
       <span class="pull-right"> <i class="fas fa-calendar-day mx-2 text-success"></i>{{params.travel_date}}  </span>
@@ -21,9 +22,12 @@
       <div class="row">
         <div class="col-sm-10"></div>
         <div class="col-sm-2">
-          <mat-form-field appearance="outline" >
+          <mat-form-field appearance="outline">
             <mat-label>Currency</mat-label>
-            <mat-select [(ngModel)]="currency" (selectionChange)="onCurrency($event)">
+            <mat-select
+              [(ngModel)]="currency"
+              (selectionChange)="onCurrency($event)"
+            >
               <mat-option value="3">TZS</mat-option>
               <mat-option value="1">KES</mat-option>
             </mat-select>
@@ -32,14 +36,21 @@
       </div>
       <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
         <div class="row">
-
           <div class="col-md-3">
             <mat-form-field appearance="outline">
               <mat-label>From</mat-label>
-              <input matInput formControlName="sourceCity" [matAutocomplete]="auto" placeholder="From">
+              <input
+                matInput
+                formControlName="sourceCity"
+                [matAutocomplete]="auto"
+                placeholder="From"
+              />
               <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                  {{option.city_name}}
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option"
+                >
+                  {{ option.city_name }}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
@@ -47,10 +58,18 @@
           <div class="col-md-3">
             <mat-form-field appearance="outline">
               <mat-label>Destination</mat-label>
-              <input matInput formControlName="destCity" [matAutocomplete]="dest" placeholder="Destination">
+              <input
+                matInput
+                formControlName="destCity"
+                [matAutocomplete]="dest"
+                placeholder="Destination"
+              />
               <mat-autocomplete #dest="matAutocomplete">
-                <mat-option *ngFor="let option of destOptions | async" [value]="option">
-                  {{option.city_name}}
+                <mat-option
+                  *ngFor="let option of destOptions | async"
+                  [value]="option"
+                >
+                  {{ option.city_name }}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
@@ -58,29 +77,46 @@
           <div class="col-md-3">
             <mat-form-field appearance="outline">
               <mat-label>Date</mat-label>
-              <input matInput [min]="date" formControlName="date" [matDatepicker]="picker1" placeholder="Date">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <input
+                matInput
+                [min]="date"
+                formControlName="date"
+                [matDatepicker]="picker1"
+                placeholder="Date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker1"
+              ></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
           </div>
           <div class="col-md-3">
             <mat-form-field appearance="outline">
-                <mat-label>Return Date</mat-label>
-                <input matInput  formControlName="return_date" [min]="return_min" [matDatepicker]="picker" placeholder="Return Date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+              <mat-label>Return Date</mat-label>
+              <input
+                matInput
+                formControlName="return_date"
+                [min]="return_min"
+                [matDatepicker]="picker"
+                placeholder="Return Date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-        </div>
+          </div>
 
-
-          <div class="col-md-12" style="text-align:right;">
-            <button class="btn btn-custom" type="submit">Modify Search </button>
+          <div class="col-md-12" style="text-align: right">
+            <button class="btn btn-custom" type="submit" >Modify Search</button>
           </div>
         </div>
       </form>
     </div>
   </div>
-  
+
   <!-- <div class="section-title"  >
     <div class="row" *ngIf="!returnTicket"  style="background-color:#ECFFDC;border-radius: 5px;padding:0.4em;">
       <div class="col-sm-8 col-12">
@@ -102,45 +138,52 @@
   </div> -->
 
   <div class="section-body">
-
-   
-    
-
     <div class="text-center">
-      <div class="row"  style="margin-top:15px;">
+      <div class="row" style="margin-top: 15px">
         <div class="col-sm-5">
-          <form [formGroup]="returnForm" (ngSubmit)="onReturnSearch()" *ngIf="show" >
+          <form
+            [formGroup]="returnForm"
+            (ngSubmit)="onReturnSearch()"
+            *ngIf="show"
+          >
             <div class="row">
-  
-          
               <div class="col-md-8">
                 <mat-form-field appearance="outline">
-                    <mat-label>Return Date</mat-label>
-                    <input matInput  formControlName="returnDate" [min]="return_min" [matDatepicker]="picker" placeholder="Return Date">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+                  <mat-label>Return Date</mat-label>
+                  <input
+                    matInput
+                    formControlName="returnDate"
+                    [min]="return_min"
+                    [matDatepicker]="picker"
+                    placeholder="Return Date"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-            </div>
+              </div>
 
-            <div class="col-md-2">
-              <button class="pull-right btn btn-sm view-seats "> Search</button>
-            </div>
-              
+              <div class="col-md-2">
+                <button class="pull-right btn btn-sm view-seats">Search</button>
+              </div>
             </div>
           </form>
         </div>
       </div>
-      
 
-      <div  *ngIf="!buses.length && loading">
-        <img src="assets/img/no_bus.png" alt="No Bus">
-        <h2 style="font-size:30px;font-weight:400">Sorry, we can not find any seat available on the date you have
-          requested on route <br>
-          <span style="font-size:20px;font-weight:600">
-            {{params.source_city}} <i class="fa-solid fa-chevron-right"></i> {{params.dest_city}}
+      <div *ngIf="!buses.length && loading">
+        <img src="assets/img/no_bus.png" alt="No Bus" />
+        <h2 style="font-size: 30px; font-weight: 400">
+          Sorry, we can not find any seat available on the date you have
+          requested on route <br />
+          <span style="font-size: 20px; font-weight: 600">
+            {{ params.source_city }} <i class="fa-solid fa-chevron-right"></i>
+            {{ params.dest_city }}
           </span>
 
-          .<br>Please try another date combination.
+          .<br />Please try another date combination.
         </h2>
       </div>
     </div>
@@ -148,23 +191,43 @@
     <div class="mt-2" *ngIf="buses.length && loading">
       <div class="row">
         <div class="col-sm-8">
-          <h3 style="font-weight: 600;color: #0F70B7;">Outbound Trip</h3>
-
+          <h3 style="font-weight: 600; color: #a61917">Outbound Trip</h3>
+        </div>
+        <div class="col-12 pb-2" *ngIf="hasHighlightedBuses">
+          <p
+            style="
+              font-weight: 600;
+              color: rgb(166, 25, 23);
+              background-color: pink;
+              padding: 0;
+              margin: 0;
+              text-align: center;
+            "
+          >
+            Please note Highlighted buses are coming from other towns and might
+            delay to depart.
+          </p>
         </div>
       </div>
     </div>
 
-    
-    <div class="custom-card mb-2" *ngFor="let item of buses;let i=index">
-      <div class="row align-items-start  py-2 container-fluid px-0 px-md-3 result-row">
+    <div class="custom-card mb-2" *ngFor="let item of buses; let i = index"  [style.backgroundColor]="item.highWayDirectRoute === 'Highway' ? 'pink' : 'transparent'">
+      <div
+        class="row align-items-start py-2 container-fluid px-0 px-md-3 result-row"
+      >
         <div class="col-4 d-block d-md-none">
-          <img src="https://cdn-icons-png.flaticon.com/512/1819/1819543.png" alt="bus icon" height="40" width="40">
-          <p class="mb-0 fw-bold small">{{item.trip_code}}</p>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1819/1819543.png"
+            alt="bus icon"
+            height="40"
+            width="40"
+          />
+          <p class="mb-0 fw-bold small">{{ item.trip_code }}</p>
           <!-- <small class="small" style="font-size:8;">{{item.bus_type}}</small> -->
         </div>
         <div class="col-3 d-block d-md-none">
-          <p class="mb-0 fw-bold small">{{item.departure_time}}</p>
-          <div class="mb-0" style="font-size: 13px !important;">
+          <p class="mb-0 fw-bold small">{{ item.departure_time }}</p>
+          <div class="mb-0" style="font-size: 13px !important">
             <i class="far fa-star fa-xs"></i>
             <i class="far fa-star fa-xs"></i>
             <i class="far fa-star fa-xs"></i>
@@ -172,44 +235,61 @@
             <i class="far fa-star fa-xs"></i>
           </div>
           <div class="">
-            <i class="fas fa-fan fa-xs" title="a/c available" ></i>
-            <i class="fas fa-wifi fa-xs" title="free wifi" ></i>
-            <i class="fas fa-bolt fa-xs" title="charging point" ></i>
-
+            <i class="fas fa-fan fa-xs" title="a/c available"></i>
+            <i class="fas fa-wifi fa-xs" title="free wifi"></i>
+            <i class="fas fa-bolt fa-xs" title="charging point"></i>
           </div>
         </div>
         <div class="col-5 d-block d-md-none">
           <table class="table table-sm table-borderless mb-0">
             <tr *ngFor="let class of item.defaultTripPriceList">
-              <td class="small" style="text-transform: capitalize">{{class.seatType}}:</td>
-              <td class="small fw-bold"> {{class.amount | number: '1.0-0'}} </td>
+              <td class="small" style="text-transform: capitalize">
+                {{ class.seatType }}:
+              </td>
+              <td class="small fw-bold">
+                {{ class.amount | number : "1.0-0" }}
+              </td>
             </tr>
-
           </table>
-          <button (click)="getSeats(item)" class="btn btn-sm float-end" style="color:rgb(230,23,115);">view seats</button>
+          <button
+            (click)="getSeats(item)"
+            class="btn btn-sm float-end"
+            style="color: rgb(166, 25, 23)"
+          >
+            view seats
+          </button>
         </div>
 
-
-        <div class="col-sm-12 pb-2 d-block d-md-none"
-          style="margin-top: 15px;background-color:#f8f3c1;border-radius:5px"
-          *ngIf="selectedTripData.bus_id == item.bus_id && selectedTripData.delayedDate == item.delayedDate">
+        <div
+          class="col-sm-12 pb-2 d-block d-md-none"
+          style="
+            margin-top: 15px;
+            background-color: #f8f3c1;
+            border-radius: 5px;
+          "
+          *ngIf="
+            selectedTripData.bus_id == item.bus_id &&
+            selectedTripData.delayedDate == item.delayedDate
+          "
+        >
           <div class="row pt-2">
-            <div class="col-sm-12 ustify-content-right" >
-            <i class="fa-regular fa-circle-xmark text-danger" style="float:right;font-size:24px"
-            (click)="getSeats(item)"></i>
+            <div class="col-sm-12 ustify-content-right">
+              <i
+                class="fa-regular fa-circle-xmark text-danger"
+                style="float: right; font-size: 24px"
+                (click)="getSeats(item)"
+              ></i>
             </div>
-              </div>
-          <div class="row ">
-         
-
-           
-
+          </div>
+          <div class="row">
             <div class="d-flex">
-          
               <div class="col-sm-12">
                 <div class="d-flex gap-2 justify-content-center">
-                  <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 " style="position: relative;text-align: left">
-                    <div style="position: relative;width:31px;height:24px">
+                  <div
+                    class="col-md-4 col-lg-4 col-sm-4 col-xs-4"
+                    style="position: relative; text-align: left"
+                  >
+                    <div style="position: relative; width: 31px; height: 24px">
                       <div class="static-seat-mob">A</div>
                       <div class="static-right-mob"></div>
                       <div class="static-top-mob"></div>
@@ -217,111 +297,263 @@
                     </div>
                     <div style="padding-top: 5px">Available</div>
                   </div>
-                  <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-right-none"
-                    style="position: relative;text-align: left">
-                    <div style="position: relative;width:31px;height:24px">
-                      <div class="static-seat-mob" style="background-color:#9a2718">S</div>
-                      <div class="static-right-mob" style="background-color:#9a2718"></div>
-                      <div class="static-top-mob" style="background-color:#9a2718"></div>
-                      <div class="static-bottom-mob" style="background-color:#9a2718"></div>
+                  <div
+                    class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-right-none"
+                    style="position: relative; text-align: left"
+                  >
+                    <div style="position: relative; width: 31px; height: 24px">
+                      <div
+                        class="static-seat-mob"
+                        style="background-color: #9a2718"
+                      >
+                        S
+                      </div>
+                      <div
+                        class="static-right-mob"
+                        style="background-color: #9a2718"
+                      ></div>
+                      <div
+                        class="static-top-mob"
+                        style="background-color: #9a2718"
+                      ></div>
+                      <div
+                        class="static-bottom-mob"
+                        style="background-color: #9a2718"
+                      ></div>
                     </div>
                     <div style="padding-top: 5px">Selected</div>
                   </div>
-                  <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-right-none"
-                    style="position: relative;text-align: left">
-                    <div style="position: relative;width:31px;height:24px">
-                      <div class="static-seat-mob" style="background-color:#ada9a9">B</div>
-                      <div class="static-right-mob" style="background-color:#ada9a9"></div>
-                      <div class="static-top-mob" style="background-color:#ada9a9"></div>
-                      <div class="static-bottom-mob" style="background-color:#ada9a9"></div>
+                  <div
+                    class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-right-none"
+                    style="position: relative; text-align: left"
+                  >
+                    <div style="position: relative; width: 31px; height: 24px">
+                      <div
+                        class="static-seat-mob"
+                        style="background-color: #ada9a9"
+                      >
+                        B
+                      </div>
+                      <div
+                        class="static-right-mob"
+                        style="background-color: #ada9a9"
+                      ></div>
+                      <div
+                        class="static-top-mob"
+                        style="background-color: #ada9a9"
+                      ></div>
+                      <div
+                        class="static-bottom-mob"
+                        style="background-color: #ada9a9"
+                      ></div>
                     </div>
                     <div style="padding-top: 5px">Booked</div>
                   </div>
                 </div>
               </div>
             </div>
-            
-            
-            <div class="d-flex"> 
-              <div class="col-sm-12"  *ngFor="let eachSeatType of item.defaultTripPriceList" style="font-size: 1px;">
+
+            <div class="d-flex">
+              <div
+                class="col-sm-12"
+                *ngFor="let eachSeatType of item.defaultTripPriceList"
+                style="font-size: 1px"
+              >
                 <i
-                class="fa-solid fa-circle"
-                [ngClass]="{'orange-color':eachSeatType.seatType == 'vip', 'green-color':eachSeatType.seatType == 'bclass', 'blue-color':eachSeatType.seatType == 'normal'}"></i>
-              <span style="text-transform: capitalize;margin-left: 5px;">{{eachSeatType.seatType}}: <span
-                  style="font-weight: 700;">{{eachSeatType.currencyCode}}</span> {{eachSeatType.amount}}</span>
+                  class="fa-solid fa-circle"
+                  [ngClass]="{
+                    'orange-color': eachSeatType.seatType == 'vip',
+                    'green-color': eachSeatType.seatType == 'bclass',
+                    'blue-color': eachSeatType.seatType == 'normal'
+                  }"
+                ></i>
+                <span style="text-transform: capitalize; margin-left: 5px"
+                  >{{ eachSeatType.seatType }}:
+                  <span style="font-weight: 700">{{
+                    eachSeatType.currencyCode
+                  }}</span>
+                  {{ eachSeatType.amount }}</span
+                >
               </div>
-           
             </div>
-            
           </div>
           <div class="row">
             <div class="col-sm-8">
-              <div class="hidden-xs  mobileSeatLayout">
-
-
-                <div [ngStyle]="{'position':'absolute', 'right':eachseat.top + 'px', 'top':eachseat.left + 'px'}"
-                  *ngFor="let eachseat of seatList" (click)="selectSeat(eachseat)">
-                  <div *ngIf="eachseat.seat_type.toLowerCase() == 'driver'" class="default-cursor">
-                    <img src="assets/img/driver.png" alt="Driver" class="driver">
+              <div class="hidden-xs mobileSeatLayout">
+                <div
+                  [ngStyle]="{
+                    position: 'absolute',
+                    right: eachseat.top + 'px',
+                    top: eachseat.left + 'px'
+                  }"
+                  *ngFor="let eachseat of seatList"
+                  (click)="selectSeat(eachseat)"
+                >
+                  <div
+                    *ngIf="eachseat.seat_type.toLowerCase() == 'driver'"
+                    class="default-cursor"
+                  >
+                    <img
+                      src="assets/img/driver.png"
+                      alt="Driver"
+                      class="driver"
+                    />
                   </div>
-                  <div *ngIf="eachseat.seat_type.toLowerCase() == 'door'" class="default-cursor">
+                  <div
+                    *ngIf="eachseat.seat_type.toLowerCase() == 'door'"
+                    class="default-cursor"
+                  >
                     <div
-                      [ngStyle]="{'width': eachseat.seat_height, 'height':eachseat.seat_width, 'line-height':eachseat.seat_height + 'px', 'border':'2px dashed #cacaca', 'text-align':'center', 'font-size':'18px', 'color':'#cacaca', 'text-transform':'uppercase'}">
-                      <div class="word-break" [ngStyle]="{'font-size':(eachseat.seat_width > 50)?'18px':'14px'}">
-                        {{eachseat.seat_name}}</div>
+                      [ngStyle]="{
+                        width: eachseat.seat_height,
+                        height: eachseat.seat_width,
+                        'line-height': eachseat.seat_height + 'px',
+                        border: '2px dashed #cacaca',
+                        'text-align': 'center',
+                        'font-size': '18px',
+                        color: '#cacaca',
+                        'text-transform': 'uppercase'
+                      }"
+                    >
+                      <div
+                        class="word-break"
+                        [ngStyle]="{
+                          'font-size':
+                            eachseat.seat_width > 50 ? '18px' : '14px'
+                        }"
+                      >
+                        {{ eachseat.seat_name }}
+                      </div>
                     </div>
                   </div>
-                  <div *ngIf="eachseat.seat_type != 'driver' && eachseat.seat_type != 'door'"
-                    style="position: relative;width:37px;height:37px;cursor:pointer">
-                    <div class="chair-seat-mob"
-                      [ngClass]="{alreadySelectedSeat: eachseat.selectSeat, alreayBooked:eachseat.selection_status || eachseat.seat_type.toLowerCase().trim() == 'staff' || eachseat.seat_name.toLowerCase().trim() == 'staff'}"
-                      style="text-align: center;"><span *ngIf="eachseat.seat_type.toLowerCase().trim() == 'staff'"
-                        style="padding-right: 10px;">STF</span><span
-                        *ngIf="eachseat.seat_type.toLowerCase().trim() != 'staff'">{{eachseat.seat_name}}</span></div>
-                    <div class="chair-right-mob"
-                      [ngClass]="{selectedSeat: eachseat.selectSeat, alreayBooked:eachseat.selection_status || eachseat.seat_type.toLowerCase().trim() == 'staff' || eachseat.seat_name.toLowerCase().trim() == 'staff'}"
-                      [ngStyle]="{'background-color': eachseat.seat_color, 'border-color':'#000', 'border-left': eachseat.seat_color}">
+                  <div
+                    *ngIf="
+                      eachseat.seat_type != 'driver' &&
+                      eachseat.seat_type != 'door'
+                    "
+                    style="
+                      position: relative;
+                      width: 37px;
+                      height: 37px;
+                      cursor: pointer;
+                    "
+                  >
+                    <div
+                      class="chair-seat-mob"
+                      [ngClass]="{
+                        alreadySelectedSeat: eachseat.selectSeat,
+                        alreayBooked:
+                          eachseat.selection_status ||
+                          eachseat.seat_type.toLowerCase().trim() == 'staff' ||
+                          eachseat.seat_name.toLowerCase().trim() == 'staff'
+                      }"
+                      style="text-align: center"
+                    >
+                      <span
+                        *ngIf="
+                          eachseat.seat_type.toLowerCase().trim() == 'staff'
+                        "
+                        style="padding-right: 10px"
+                        >STF</span
+                      ><span
+                        *ngIf="
+                          eachseat.seat_type.toLowerCase().trim() != 'staff'
+                        "
+                        >{{ eachseat.seat_name }}</span
+                      >
                     </div>
-                    <div class="chair-left-mob"
-                      [ngClass]="{selectedSeat: eachseat.selectSeat, alreayBooked:eachseat.selection_status || eachseat.seat_type.toLowerCase().trim() == 'staff' || eachseat.seat_name.toLowerCase().trim() == 'staff'}"
-                      [ngStyle]="{'background-color': eachseat.seat_color, 'border-color':'#000', 'border-bottom': eachseat.seat_color}">
-                    </div>
-                    <div class="chair-bottom-mob"
-                      [ngClass]="{selectedSeat: eachseat.selectSeat, alreayBooked:eachseat.selection_status || eachseat.seat_type.toLowerCase().trim() == 'staff' || eachseat.seat_name.toLowerCase().trim() == 'staff'}"
-                      [ngStyle]="{'background-color': eachseat.seat_color, 'border-color':'#000', 'border-top': eachseat.seat_color}">
-                    </div>
+                    <div
+                      class="chair-right-mob"
+                      [ngClass]="{
+                        selectedSeat: eachseat.selectSeat,
+                        alreayBooked:
+                          eachseat.selection_status ||
+                          eachseat.seat_type.toLowerCase().trim() == 'staff' ||
+                          eachseat.seat_name.toLowerCase().trim() == 'staff'
+                      }"
+                      [ngStyle]="{
+                        'background-color': eachseat.seat_color,
+                        'border-color': '#000',
+                        'border-left': eachseat.seat_color
+                      }"
+                    ></div>
+                    <div
+                      class="chair-left-mob"
+                      [ngClass]="{
+                        selectedSeat: eachseat.selectSeat,
+                        alreayBooked:
+                          eachseat.selection_status ||
+                          eachseat.seat_type.toLowerCase().trim() == 'staff' ||
+                          eachseat.seat_name.toLowerCase().trim() == 'staff'
+                      }"
+                      [ngStyle]="{
+                        'background-color': eachseat.seat_color,
+                        'border-color': '#000',
+                        'border-bottom': eachseat.seat_color
+                      }"
+                    ></div>
+                    <div
+                      class="chair-bottom-mob"
+                      [ngClass]="{
+                        selectedSeat: eachseat.selectSeat,
+                        alreayBooked:
+                          eachseat.selection_status ||
+                          eachseat.seat_type.toLowerCase().trim() == 'staff' ||
+                          eachseat.seat_name.toLowerCase().trim() == 'staff'
+                      }"
+                      [ngStyle]="{
+                        'background-color': eachseat.seat_color,
+                        'border-color': '#000',
+                        'border-top': eachseat.seat_color
+                      }"
+                    ></div>
                   </div>
                 </div>
-
               </div>
-
-
             </div>
             <div class="col-sm-4 col-12">
               <div class="card">
-
                 <div class="card-body">
                   <div class="row">
-                    <form [formGroup]="boardingForm"  >
+                    <form [formGroup]="boardingForm">
                       <div class="row">
                         <div class="col-sm-12">
-                        
                           <mat-form-field appearance="outline">
                             <mat-label>Boarding Point</mat-label>
-                            <mat-select formControlName="boarding" (selectionChange)="selectBoarding(boardingForm.get('boarding').value)">
-                              <mat-option *ngFor="let boarding of boarding_points" [value]="boarding">
-                                {{boarding.name}}
+                            <mat-select
+                              formControlName="boarding"
+                              (selectionChange)="
+                                selectBoarding(
+                                  boardingForm.get('boarding').value
+                                )
+                              "
+                            >
+                              <mat-option
+                                *ngFor="let boarding of boarding_points"
+                                [value]="boarding"
+                              >
+                                {{ boarding.name }}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
                         </div>
-    
+
                         <div class="col-sm-12">
                           <mat-form-field appearance="outline">
                             <mat-label>Dropping Point</mat-label>
-                            <mat-select  formControlName="dropping" (selectionChange)="selectDropping(boardingForm.get('dropping').value)">
-                              <mat-option *ngFor="let dropping of dropping_points" [value]="dropping">
-                                {{dropping.name}}
+                            <mat-select
+                              formControlName="dropping"
+                              (selectionChange)="
+                                selectDropping(
+                                  boardingForm.get('dropping').value
+                                )
+                              "
+                            >
+                              <mat-option
+                                *ngFor="let dropping of dropping_points"
+                                [value]="dropping"
+                              >
+                                {{ dropping.name }}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
@@ -332,63 +564,105 @@
                       <div class="row">
                         <div class="col-sm-4">Seats</div>
                         <div class="col-sm-8">
-                          <span *ngFor="let seat of seats;let last = last;">
-                            {{seat.seat_name}} {{last ? '' : ', '}}
+                          <span *ngFor="let seat of seats; let last = last">
+                            {{ seat.seat_name }} {{ last ? "" : ", " }}
                           </span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-12" *ngFor="let data of selectedData | keyvalue">
+                    <div
+                      class="col-sm-12"
+                      *ngFor="let data of selectedData | keyvalue"
+                    >
                       <span *ngIf="(data.value | json) != '{}'">
-                        <span style="text-transform:capitalize;">{{data.key}}</span>:
-                        <span style="float: right;">{{data.value.totalSeat}} X {{data.value.ticketFare}} = <span
-                            style="font-weight: 600;">{{data.value.currency}} {{data.value.totalTicketFare}}</span>
+                        <span style="text-transform: capitalize">{{
+                          data.key
+                        }}</span
+                        >:
+                        <span style="float: right"
+                          >{{ data.value.totalSeat }} X
+                          {{ data.value.ticketFare }} =
+                          <span style="font-weight: 600"
+                            >{{ data.value.currency }}
+                            {{ data.value.totalTicketFare }}</span
+                          >
                         </span>
                       </span>
                     </div>
                   </div>
                 </div>
-                <div class="card-footer" style="background-color: black;color:white;font-weight: 600;font-size: 13px;">
-                  <mat-icon matBadge="{{seats.length}}">receipt</mat-icon>
-                  <span style="float:right;font-size: 12px;"> FARE: {{total | number:'1.2-2'}}</span>
+                <div
+                  class="card-footer"
+                  style="
+                    background-color: black;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 13px;
+                  "
+                >
+                  <mat-icon matBadge="{{ seats.length }}">receipt</mat-icon>
+                  <span style="float: right; font-size: 12px">
+                    FARE: {{ total | number : "1.2-2" }}</span
+                  >
                 </div>
               </div>
             </div>
 
-
-
-
             <div class="col-sm-12">
-              <button class="btn search-seats" [disabled]="!seats.length || boardingForm.invalid" style="margin-right: 5px;float: right;"
-                (click)="save()">CONTINUE <i class="fa-solid fa-chevron-right"></i></button>
+              <button
+                class="btn search-seats"
+                [disabled]="!seats.length || boardingForm.invalid"
+                style="margin-right: 5px; float: right"
+                (click)="save()"
+              >
+                CONTINUE <i class="fa-solid fa-chevron-right"></i>
+              </button>
             </div>
           </div>
         </div>
-
-
       </div>
 
-      <div class="row align-items-start border-bottom py-2 py-md-3 container-fluid px-0 px-md-3 result-row">
+      <div
+        class="row align-items-start border-bottom py-2 py-md-3 container-fluid px-0 px-md-3 result-row"
+      >
         <div class="col-1 d-none d-md-block">
-          <img src="https://cdn-icons-png.flaticon.com/512/1819/1819543.png" alt="bus icon" height="50" width="50">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1819/1819543.png"
+            alt="bus icon"
+            height="50"
+            width="50"
+          />
         </div>
         <div class="col-3 d-none d-md-block">
-          <p class="mb-0 fw-bold">{{item.trip_code}}</p>
-          <small>{{item.bus_type}}</small>
+          <p class="mb-0 fw-bold">{{ item.trip_code }}</p>
+          <small>{{ item.bus_type }}</small>
           <div class="d-flex gap-3 mt-2">
-            <i class="fas fa-fan" title="a/c available" ></i>
-            <i class="fas fa-wifi" title="free wifi" data-bs-toggle="tooltip" data-bs-placement="bottom"
-              data-bs-title="free wifi"></i>
-            <i class="fas fa-bolt" title="charging point" data-bs-toggle="tooltip" data-bs-placement="bottom"
-              data-bs-title="charging point"></i>
-
+            <i class="fas fa-fan" title="a/c available"></i>
+            <i
+              class="fas fa-wifi"
+              title="free wifi"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              data-bs-title="free wifi"
+            ></i>
+            <i
+              class="fas fa-bolt"
+              title="charging point"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              data-bs-title="charging point"
+            ></i>
           </div>
         </div>
         <div class="text-center col-2 d-none d-md-flex align-items-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/581/581838.png" alt="" height="40">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/581/581838.png"
+            alt=""
+            height="40"
+          />
           <div>
-            <p class="fw-bold">{{item.departure_time}}</p>
-            <p class="mb-0">{{item.arrival_time}}</p>
+            <p class="fw-bold">{{ item.departure_time }}</p>
+            <p class="mb-0">{{ item.arrival_time }}</p>
           </div>
         </div>
         <div class="col-2 d-none d-md-block">
@@ -403,100 +677,273 @@
         </div>
         <div class="col-4 d-none d-md-flex justify-content-between">
           <div class="text-end">
-            <p class="mb-0" *ngFor="let class of item.defaultTripPriceList" style="text-transform: capitalize;">
-              {{class.seatType}}:</p>
+            <p
+              class="mb-0"
+              *ngFor="let class of item.defaultTripPriceList"
+              style="text-transform: capitalize"
+            >
+              {{ class.seatType }}:
+            </p>
           </div>
           <div>
-            <p class="mb-0" *ngFor="let class of item.defaultTripPriceList">{{class.currencyCode}} {{class.amount |
-              number: '1.0-0'}}</p>
+            <p class="mb-0" *ngFor="let class of item.defaultTripPriceList">
+              {{ class.currencyCode }} {{ class.amount | number : "1.0-0" }}
+            </p>
           </div>
           <div class="text-end">
-            <p class="mb-1 primary">{{item.available_seat_count}} seats available</p>
-            <button class="btn btn-sm" style="background-color:rgb(230,23,115);color: white;" (click)="getSeats(item)">View seats</button>
+            <p class="mb-1 primary">
+              {{ item.available_seat_count }} seats available
+            </p>
+            <button
+              class="btn btn-sm"
+              style="background-color: rgb(166, 25, 23); color: white"
+              (click)="getSeats(item)"
+            >
+              View seats
+            </button>
           </div>
         </div>
-        <div class="col-sm-12 pb-2 d-none d-md-block"
-          style="margin-top: 15px;background-color:#f8f3c1;border-radius:5px"
-          *ngIf="selectedTripData.bus_id == item.bus_id && selectedTripData.delayedDate == item.delayedDate">
+        <div
+          class="col-sm-12 pb-2 d-none d-md-block"
+          style="
+            margin-top: 15px;
+            background-color: #f8f3c1;
+            border-radius: 5px;
+          "
+          *ngIf="
+            selectedTripData.bus_id == item.bus_id &&
+            selectedTripData.delayedDate == item.delayedDate
+          "
+        >
           <div class="row pt-1">
             <div class="col-sm-8">
-              <span style="font-size: 14px;font-weight:700;text-transform:capitalize">Customise your journey</span>
+              <span
+                style="
+                  font-size: 14px;
+                  font-weight: 700;
+                  text-transform: capitalize;
+                "
+                >Customise your journey</span
+              >
             </div>
             <div class="col-sm-4">
-              <i class="fa-regular fa-circle-xmark text-danger" style="float:right;font-size:24px"
-                (click)="getSeats(item)"></i>
+              <i
+                class="fa-regular fa-circle-xmark text-danger"
+                style="float: right; font-size: 24px"
+                (click)="getSeats(item)"
+              ></i>
             </div>
-
           </div>
 
           <div class="row pt-3">
-
-            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 padding-0 fs-13 pt-12">
-
-              <div class="col-md-4 padding-0" *ngFor="let eachSeatType of item.defaultTripPriceList"> <i
+            <div
+              class="col-md-6 col-xs-6 col-sm-6 col-lg-6 padding-0 fs-13 pt-12"
+            >
+              <div
+                class="col-md-4 padding-0"
+                *ngFor="let eachSeatType of item.defaultTripPriceList"
+              >
+                <i
                   class="fa-solid fa-circle"
-                  [ngClass]="{'orange-color':eachSeatType.seatType == 'vip', 'green-color':eachSeatType.seatType == 'bclass', 'blue-color':eachSeatType.seatType == 'normal'}"></i>
-                <span style="text-transform: capitalize;margin-left: 5px;">{{eachSeatType.seatType}}: <span
-                    style="font-weight: 700;">{{eachSeatType.currencyCode}}</span> {{eachSeatType.amount}}</span>
+                  [ngClass]="{
+                    'orange-color': eachSeatType.seatType == 'vip',
+                    'green-color': eachSeatType.seatType == 'bclass',
+                    'blue-color': eachSeatType.seatType == 'normal'
+                  }"
+                ></i>
+                <span style="text-transform: capitalize; margin-left: 5px"
+                  >{{ eachSeatType.seatType }}:
+                  <span style="font-weight: 700">{{
+                    eachSeatType.currencyCode
+                  }}</span>
+                  {{ eachSeatType.amount }}</span
+                >
               </div>
             </div>
-            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 padding-0 text-center">
+            <div
+              class="col-md-6 col-xs-6 col-sm-6 col-lg-6 padding-0 text-center"
+            >
               <div class="row">
-                <div class="col-md-4 row padding-right-none" style="position: relative">
+                <div
+                  class="col-md-4 row padding-right-none"
+                  style="position: relative"
+                >
                   <div class="col-lg-4 col-md-4">
-                    <div style="position:absolute;top:0;left:32px">
-                      <div style="position: relative;width:31px;height:24px;">
-                        <div class="chair-seat"
-                          style="text-align: center;background-color:#fff;width:26px;height: 27px;">
-                          A</div>
-                        <div class="chair-right"
-                          style="background-color:#fff;height:29px;width: 7px;left:24px;top:-1px">
+                    <div style="position: absolute; top: 0; left: 32px">
+                      <div
+                        style="position: relative; width: 31px; height: 24px"
+                      >
+                        <div
+                          class="chair-seat"
+                          style="
+                            text-align: center;
+                            background-color: #fff;
+                            width: 26px;
+                            height: 27px;
+                          "
+                        >
+                          A
                         </div>
-                        <div class="chair-top" style="background-color:#fff;height: 7px;left:10px;width:15px;top:-1px">
-                        </div>
-                        <div class="chair-bottom"
-                          style="background-color:#fff;top:21px;height:7px;left:10px;width:15px">
-                        </div>
+                        <div
+                          class="chair-right"
+                          style="
+                            background-color: #fff;
+                            height: 29px;
+                            width: 7px;
+                            left: 24px;
+                            top: -1px;
+                          "
+                        ></div>
+                        <div
+                          class="chair-top"
+                          style="
+                            background-color: #fff;
+                            height: 7px;
+                            left: 10px;
+                            width: 15px;
+                            top: -1px;
+                          "
+                        ></div>
+                        <div
+                          class="chair-bottom"
+                          style="
+                            background-color: #fff;
+                            top: 21px;
+                            height: 7px;
+                            left: 10px;
+                            width: 15px;
+                          "
+                        ></div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-8 col-md-8 padding-0" style="line-height:39px">Available Seat</div>
+                  <div
+                    class="col-lg-8 col-md-8 padding-0"
+                    style="line-height: 39px"
+                  >
+                    Available Seat
+                  </div>
                 </div>
-                <div class="col-md-4 row padding-right-none" style="position: relative">
+                <div
+                  class="col-md-4 row padding-right-none"
+                  style="position: relative"
+                >
                   <div class="col-lg-4 col-md-4">
-                    <div style="position:absolute;top:0;left:32px">
-                      <div style="position: relative;width:31px;height:24px;">
-                        <div class="chair-seat"
-                          style="text-align: center;background-color:#9a2718;width:26px;height: 27px;color:#fff">S</div>
-                        <div class="chair-right"
-                          style="background-color:#9a2718;height:29px;width: 7px;left:24px;top:-1px"></div>
-                        <div class="chair-top"
-                          style="background-color:#9a2718;height: 7px;left:10px;width:15px;top:-1px">
+                    <div style="position: absolute; top: 0; left: 32px">
+                      <div
+                        style="position: relative; width: 31px; height: 24px"
+                      >
+                        <div
+                          class="chair-seat"
+                          style="
+                            text-align: center;
+                            background-color: #9a2718;
+                            width: 26px;
+                            height: 27px;
+                            color: #fff;
+                          "
+                        >
+                          S
                         </div>
-                        <div class="chair-bottom"
-                          style="background-color:#9a2718;top:21px;height:7px;left:10px;width:15px"></div>
+                        <div
+                          class="chair-right"
+                          style="
+                            background-color: #9a2718;
+                            height: 29px;
+                            width: 7px;
+                            left: 24px;
+                            top: -1px;
+                          "
+                        ></div>
+                        <div
+                          class="chair-top"
+                          style="
+                            background-color: #9a2718;
+                            height: 7px;
+                            left: 10px;
+                            width: 15px;
+                            top: -1px;
+                          "
+                        ></div>
+                        <div
+                          class="chair-bottom"
+                          style="
+                            background-color: #9a2718;
+                            top: 21px;
+                            height: 7px;
+                            left: 10px;
+                            width: 15px;
+                          "
+                        ></div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-8 col-md-8 padding-0" style="line-height:39px">Selected seats</div>
+                  <div
+                    class="col-lg-8 col-md-8 padding-0"
+                    style="line-height: 39px"
+                  >
+                    Selected seats
+                  </div>
                 </div>
-                <div class="col-md-4 row padding-right-none" style="position: relative">
+                <div
+                  class="col-md-4 row padding-right-none"
+                  style="position: relative"
+                >
                   <div class="col-lg-4 col-md-4">
-                    <div style="position:absolute;top:0;left:38px">
-                      <div style="position: relative;width:31px;height:24px;">
-                        <div class="chair-seat"
-                          style="text-align: center;background-color: #ada9a9;width:26px;height: 27px;">B</div>
-                        <div class="chair-right"
-                          style="background-color:#ada9a9;height:29px;width: 7px;left:24px;top:-1px"></div>
-                        <div class="chair-top"
-                          style="background-color:#ada9a9;height: 7px;left:10px;width:15px;top:-1px">
+                    <div style="position: absolute; top: 0; left: 38px">
+                      <div
+                        style="position: relative; width: 31px; height: 24px"
+                      >
+                        <div
+                          class="chair-seat"
+                          style="
+                            text-align: center;
+                            background-color: #ada9a9;
+                            width: 26px;
+                            height: 27px;
+                          "
+                        >
+                          B
                         </div>
-                        <div class="chair-bottom"
-                          style="background-color:#ada9a9;top:21px;height:7px;left:10px;width:15px"></div>
+                        <div
+                          class="chair-right"
+                          style="
+                            background-color: #ada9a9;
+                            height: 29px;
+                            width: 7px;
+                            left: 24px;
+                            top: -1px;
+                          "
+                        ></div>
+                        <div
+                          class="chair-top"
+                          style="
+                            background-color: #ada9a9;
+                            height: 7px;
+                            left: 10px;
+                            width: 15px;
+                            top: -1px;
+                          "
+                        ></div>
+                        <div
+                          class="chair-bottom"
+                          style="
+                            background-color: #ada9a9;
+                            top: 21px;
+                            height: 7px;
+                            left: 10px;
+                            width: 15px;
+                          "
+                        ></div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-8 col-md-8 padding-0" style="line-height:39px">Booked seats</div>
+                  <div
+                    class="col-lg-8 col-md-8 padding-0"
+                    style="line-height: 39px"
+                  >
+                    Booked seats
+                  </div>
                 </div>
               </div>
             </div>
@@ -504,84 +951,221 @@
           <div class="row">
             <div class="col-sm-8">
               <div class="hidden-xs seatLayout">
-                <div [ngStyle]="{'position':'absolute', 'top':eachseat.top + 'px', 'left':eachseat.left + 'px'}"
-                  *ngFor="let eachseat of seatList" data-toggle="tooltip" data-placement="bottom"
-                  title="{{tooltip(eachseat,item)}}" (click)="selectSeat(eachseat)">
-                  <div style="position: relative;width:50px;height:45px;">
-                    <div *ngIf="eachseat.seat_type.toLowerCase() == 'driver'" class="default-cursor">
-                      <img src="assets/img/driver.png" alt="Driver" class="driver">
+                <div
+                  [ngStyle]="{
+                    position: 'absolute',
+                    top: eachseat.top + 'px',
+                    left: eachseat.left + 'px'
+                  }"
+                  *ngFor="let eachseat of seatList"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="{{ tooltip(eachseat, item) }}"
+                  (click)="selectSeat(eachseat)"
+                >
+                  <div style="position: relative; width: 50px; height: 45px">
+                    <div
+                      *ngIf="eachseat.seat_type.toLowerCase() == 'driver'"
+                      class="default-cursor"
+                    >
+                      <img
+                        src="assets/img/driver.png"
+                        alt="Driver"
+                        class="driver"
+                      />
                     </div>
-                    <div *ngIf="eachseat.seat_type.toLowerCase() == 'door' || eachseat.seat_type.toLowerCase() == 'main-door'" class="default-cursor">
+                    <div
+                      *ngIf="
+                        eachseat.seat_type.toLowerCase() == 'door' ||
+                        eachseat.seat_type.toLowerCase() == 'main-door'
+                      "
+                      class="default-cursor"
+                    >
                       <div
-                        [ngStyle]="{'width': eachseat.seat_width, 'height':eachseat.seat_height, 'line-height':eachseat.seat_height + 'px', 'border':'2px dashed #e8e8e8', 'text-align':'center', 'font-size':'18px', 'color':'#e8e8e8', 'text-transform':'uppercase'}">
+                        [ngStyle]="{
+                          width: eachseat.seat_width,
+                          height: eachseat.seat_height,
+                          'line-height': eachseat.seat_height + 'px',
+                          border: '2px dashed #e8e8e8',
+                          'text-align': 'center',
+                          'font-size': '18px',
+                          color: '#e8e8e8',
+                          'text-transform': 'uppercase'
+                        }"
+                      >
                         <!-- {{eachseat.seat_name}} -->
                         Door
                       </div>
                     </div>
 
-                    <div *ngIf="eachseat.seat_type.toLowerCase() == 'toilet' || eachseat.seat_type.toLowerCase() == 'fridge'" class="default-cursor">
+                    <div
+                      *ngIf="
+                        eachseat.seat_type.toLowerCase() == 'toilet' ||
+                        eachseat.seat_type.toLowerCase() == 'fridge'
+                      "
+                      class="default-cursor"
+                    >
                       <div
-                        [ngStyle]="{'width': eachseat.seat_width, 'height':eachseat.seat_height, 'line-height':eachseat.seat_height + 'px', 'border':'2px dashed #e8e8e8', 'text-align':'center', 'font-size':'18px', 'color':'#e8e8e8', 'text-transform':'uppercase'}">
-                        <span style="color:rgb(230,23,115);font-size: 10px;">{{eachseat.seat_name}}</span>
+                        [ngStyle]="{
+                          width: eachseat.seat_width,
+                          height: eachseat.seat_height,
+                          'line-height': eachseat.seat_height + 'px',
+                          border: '2px dashed #e8e8e8',
+                          'text-align': 'center',
+                          'font-size': '18px',
+                          color: '#e8e8e8',
+                          'text-transform': 'uppercase'
+                        }"
+                      >
+                        <span
+                          style="color: rgb(166, 25, 23); font-size: 10px"
+                          >{{ eachseat.seat_name }}</span
+                        >
                       </div>
                     </div>
 
-                    <div style="position: relative;width:50px;height:45px;"
-                      *ngIf="eachseat.seat_type.toLowerCase() != 'driver' && eachseat.seat_type.toLowerCase() != 'door'  && eachseat.seat_type.toLowerCase() != 'toilet' && eachseat.seat_type.toLowerCase() != 'fridge' && eachseat.seat_type.toLowerCase() != 'main-door'">
-                      <div class="chair-seat"
-                        [ngClass]="{alreadySelectedSeat: eachseat.selectSeat, alreayBooked:eachseat.selection_status || eachseat.seat_type.toLowerCase().trim() == 'staff' || eachseat.seat_name.toLowerCase().trim() == 'staff'}"
-                        style="text-align: center;padding-right: 8px;padding-top: 5px;"><span
-                          *ngIf="eachseat.seat_type.toLowerCase().trim() == 'staff'"
-                          style="padding-right: 10px;">STF</span><span
-                          *ngIf="eachseat.seat_type.toLowerCase().trim() != 'staff'">{{eachseat.seat_name }}</span>
+                    <div
+                      style="position: relative; width: 50px; height: 45px"
+                      *ngIf="
+                        eachseat.seat_type.toLowerCase() != 'driver' &&
+                        eachseat.seat_type.toLowerCase() != 'door' &&
+                        eachseat.seat_type.toLowerCase() != 'toilet' &&
+                        eachseat.seat_type.toLowerCase() != 'fridge' &&
+                        eachseat.seat_type.toLowerCase() != 'main-door'
+                      "
+                    >
+                      <div
+                        class="chair-seat"
+                        [ngClass]="{
+                          alreadySelectedSeat: eachseat.selectSeat,
+                          alreayBooked:
+                            eachseat.selection_status ||
+                            eachseat.seat_type.toLowerCase().trim() ==
+                              'staff' ||
+                            eachseat.seat_name.toLowerCase().trim() == 'staff'
+                        }"
+                        style="
+                          text-align: center;
+                          padding-right: 8px;
+                          padding-top: 5px;
+                        "
+                      >
+                        <span
+                          *ngIf="
+                            eachseat.seat_type.toLowerCase().trim() == 'staff'
+                          "
+                          style="padding-right: 10px"
+                          >STF</span
+                        ><span
+                          *ngIf="
+                            eachseat.seat_type.toLowerCase().trim() != 'staff'
+                          "
+                          >{{ eachseat.seat_name }}</span
+                        >
                       </div>
-                      <div class="chair-right"
-                        [ngClass]="{selectedSeat: eachseat.selectSeat, alreayBooked:eachseat.selection_status || eachseat.seat_type.toLowerCase().trim() == 'staff' || eachseat.seat_name.toLowerCase().trim() == 'staff'}"
-                        [ngStyle]="{'background-color': eachseat.seat_color, 'border-color':'#000', 'border-left': eachseat.seat_color}">
-                      </div>
-                      <div class="chair-top"
-                        [ngClass]="{selectedSeat: eachseat.selectSeat, alreayBooked:eachseat.selection_status || eachseat.seat_type.toLowerCase().trim() == 'staff' || eachseat.seat_name.toLowerCase().trim() == 'staff'}"
-                        [ngStyle]="{'background-color': eachseat.seat_color, 'border-color':'#000', 'border-bottom': eachseat.seat_color}">
-                      </div>
-                      <div class="chair-bottom"
-                        [ngClass]="{selectedSeat: eachseat.selectSeat, alreayBooked:eachseat.selection_status || eachseat.seat_type.toLowerCase().trim() == 'staff' || eachseat.seat_name.toLowerCase().trim() == 'staff'}"
-                        [ngStyle]="{'background-color': eachseat.seat_color, 'border-color':'#000', 'border-top': eachseat.seat_color}">
-                      </div>
+                      <div
+                        class="chair-right"
+                        [ngClass]="{
+                          selectedSeat: eachseat.selectSeat,
+                          alreayBooked:
+                            eachseat.selection_status ||
+                            eachseat.seat_type.toLowerCase().trim() ==
+                              'staff' ||
+                            eachseat.seat_name.toLowerCase().trim() == 'staff'
+                        }"
+                        [ngStyle]="{
+                          'background-color': eachseat.seat_color,
+                          'border-color': '#000',
+                          'border-left': eachseat.seat_color
+                        }"
+                      ></div>
+                      <div
+                        class="chair-top"
+                        [ngClass]="{
+                          selectedSeat: eachseat.selectSeat,
+                          alreayBooked:
+                            eachseat.selection_status ||
+                            eachseat.seat_type.toLowerCase().trim() ==
+                              'staff' ||
+                            eachseat.seat_name.toLowerCase().trim() == 'staff'
+                        }"
+                        [ngStyle]="{
+                          'background-color': eachseat.seat_color,
+                          'border-color': '#000',
+                          'border-bottom': eachseat.seat_color
+                        }"
+                      ></div>
+                      <div
+                        class="chair-bottom"
+                        [ngClass]="{
+                          selectedSeat: eachseat.selectSeat,
+                          alreayBooked:
+                            eachseat.selection_status ||
+                            eachseat.seat_type.toLowerCase().trim() ==
+                              'staff' ||
+                            eachseat.seat_name.toLowerCase().trim() == 'staff'
+                        }"
+                        [ngStyle]="{
+                          'background-color': eachseat.seat_color,
+                          'border-color': '#000',
+                          'border-top': eachseat.seat_color
+                        }"
+                      ></div>
                     </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
             <div class="col-sm-4">
               <div class="card">
-                <div class="card-header text-white" style="background-color:rgb(230,23,115);">
-                  <i class="fa fa-map-marker" aria-hidden="true"></i> Boarding & Dropping
+                <div
+                  class="card-header text-white"
+                  style="background-color: rgb(166, 25, 23)"
+                >
+                  <i class="fa fa-map-marker" aria-hidden="true"></i> Boarding &
+                  Dropping
                 </div>
                 <div class="card-body">
                   <div class="row">
-
-                    <form [formGroup]="boardingForm"  >
+                    <form [formGroup]="boardingForm">
                       <div class="row">
                         <div class="col-sm-12">
-                        
                           <mat-form-field appearance="outline">
                             <mat-label>Boarding Point</mat-label>
-                            <mat-select formControlName="boarding" (selectionChange)="selectBoarding(boardingForm.get('boarding').value)">
-                              <mat-option *ngFor="let boarding of boarding_points" [value]="boarding">
-                                {{boarding.name}}
+                            <mat-select
+                              formControlName="boarding"
+                              (selectionChange)="
+                                selectBoarding(
+                                  boardingForm.get('boarding').value
+                                )
+                              "
+                            >
+                              <mat-option
+                                *ngFor="let boarding of boarding_points"
+                                [value]="boarding"
+                              >
+                                {{ boarding.name }}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
                         </div>
-    
+
                         <div class="col-sm-12">
                           <mat-form-field appearance="outline">
                             <mat-label>Dropping Point</mat-label>
-                            <mat-select  formControlName="dropping" (change)="selectDropping(boardingForm.get('dropping').value)">
-                              <mat-option *ngFor="let dropping of dropping_points" [value]="dropping">
-                                {{dropping.name}}
+                            <mat-select
+                              formControlName="dropping"
+                              (change)="
+                                selectDropping(
+                                  boardingForm.get('dropping').value
+                                )
+                              "
+                            >
+                              <mat-option
+                                *ngFor="let dropping of dropping_points"
+                                [value]="dropping"
+                              >
+                                {{ dropping.name }}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
@@ -592,172 +1176,332 @@
                       <div class="row">
                         <div class="col-sm-4">Seats</div>
                         <div class="col-sm-8">
-                          <span *ngFor="let seat of seats;let last = last;">
-                            {{seat.seat_name}} {{last ? '' : ', '}}
+                          <span *ngFor="let seat of seats; let last = last">
+                            {{ seat.seat_name }} {{ last ? "" : ", " }}
                           </span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-12" *ngFor="let data of selectedData | keyvalue">
+                    <div
+                      class="col-sm-12"
+                      *ngFor="let data of selectedData | keyvalue"
+                    >
                       <span *ngIf="(data.value | json) != '{}'">
-                        <span style="text-transform:capitalize;">{{data.key}}</span>:
-                        <span style="float: right;">{{data.value.totalSeat}} X {{data.value.ticketFare}} = <span
-                            style="font-weight: 600;">{{data.value.currency}} {{data.value.totalTicketFare}}</span>
+                        <span style="text-transform: capitalize">{{
+                          data.key
+                        }}</span
+                        >:
+                        <span style="float: right"
+                          >{{ data.value.totalSeat }} X
+                          {{ data.value.ticketFare }} =
+                          <span style="font-weight: 600"
+                            >{{ data.value.currency }}
+                            {{ data.value.totalTicketFare }}</span
+                          >
                         </span>
                       </span>
                     </div>
                   </div>
                 </div>
-                <div class="card-footer" style="color:rgb(230,23,115);font-weight: 600;font-size: 13px;">
-                  <mat-icon matBadge="{{seats.length}}" color="accent">receipt</mat-icon>
-                  <span style="float:right;font-size: 12px;"> FARE: {{total | number:'1.2-2'}}</span>
+                <div
+                  class="card-footer"
+                  style="
+                    color: rgb(166, 25, 23);
+                    font-weight: 600;
+                    font-size: 13px;
+                  "
+                >
+                  <mat-icon matBadge="{{ seats.length }}" color="accent"
+                    >receipt</mat-icon
+                  >
+                  <span style="float: right; font-size: 12px">
+                    FARE: {{ total | number : "1.2-2" }}</span
+                  >
                 </div>
               </div>
             </div>
 
-
-
-
             <div class="col-sm-12">
-              <button class="btn search-seats" [disabled]="!seats.length || boardingForm.invalid"   style="margin-right: 5px;float: right;"
-                (click)="save()">CONTINUE <i class="fa-solid fa-chevron-right"></i></button>
+              <button
+                class="btn search-seats"
+                [disabled]="!seats.length || boardingForm.invalid"
+                style="margin-right: 5px; float: right"
+                (click)="save()"
+              >
+                CONTINUE <i class="fa-solid fa-chevron-right"></i>
+              </button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-
-
-
 </div>
 
-
-<div class="modal fade" bsModal #reviewModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
-  aria-labelledby="dialog-static-name">
+<div
+  class="modal fade"
+  bsModal
+  #reviewModal="bs-modal"
+  [config]="{ backdrop: 'static' }"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-static-name"
+>
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="dialog-static-name" class="modal-title pull-left">Trip Review</h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="reviewModal.hide()">
+        <h4 id="dialog-static-name" class="modal-title pull-left">
+          Trip Review
+        </h4>
+        <button
+          type="button"
+          class="btn-close close pull-right"
+          aria-label="Close"
+          (click)="reviewModal.hide()"
+        >
           <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="row" *ngIf="reviewInfo.onwardticket" style="padding-bottom: 5px">
-          <div class="row" style="font-size: 15px;font-weight: 600;margin-bottom: 10px">
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0"><span class="crossBorderSpan"
-                style="background-color:#cbffcb"><span style="font-size:18px">Onward</span> |
-                {{reviewInfo.onwardticket?.source_city}} <i class="fa-solid fa-chevron-right"></i>
-                {{reviewInfo.onwardticket?.dest_city}} | <span class="ng-binding"></span></span>
+        <div
+          class="row"
+          *ngIf="reviewInfo.onwardticket"
+          style="padding-bottom: 5px"
+        >
+          <div
+            class="row"
+            style="font-size: 15px; font-weight: 600; margin-bottom: 10px"
+          >
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0">
+              <span class="crossBorderSpan" style="background-color: #cbffcb"
+                ><span style="font-size: 18px">Onward</span> |
+                {{ reviewInfo.onwardticket?.source_city }}
+                <i class="fa-solid fa-chevron-right"></i>
+                {{ reviewInfo.onwardticket?.dest_city }} |
+                <span class="ng-binding"></span
+              ></span>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="text-align: right"><span
-                style="padding-right: 5px">Seat(s):</span>
+            <div
+              class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
+              style="text-align: right"
+            >
+              <span style="padding-right: 5px">Seat(s):</span>
               <span
-                *ngFor="let eachseat of reviewInfo?.onwardticket?.passenger;let last=last">{{eachseat.seat_name}}{{last
-                ? '' : ', '}}</span>
+                *ngFor="
+                  let eachseat of reviewInfo?.onwardticket?.passenger;
+                  let last = last
+                "
+                >{{ eachseat.seat_name }}{{ last ? "" : ", " }}</span
+              >
             </div>
           </div>
-          <div class="row disableBorder" style="display: flex;flex-wrap: wrap">
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 padding-left-0 sameHeightColumn" style="text-align: center">
-              <img src="assets/img/bus.svg" alt="bus" style="width: 65px;opacity: 0.4">
+          <div class="row disableBorder" style="display: flex; flex-wrap: wrap">
+            <div
+              class="col-lg-2 col-md-2 col-sm-4 col-xs-4 padding-left-0 sameHeightColumn"
+              style="text-align: center"
+            >
+              <img
+                src="assets/img/bus.svg"
+                alt="bus"
+                style="width: 65px; opacity: 0.4"
+              />
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 padding-left-0 sameHeightColumn">
+            <div
+              class="col-lg-3 col-md-3 col-sm-6 col-xs-6 padding-left-0 sameHeightColumn"
+            >
               <div class="reviewPadding">
-                <div style="font-size:15px" class="hidden-xs"><b>Company Name</b></div>
-                <div style="font-size:15px" class="ng-binding">{{reviewInfo?.onwardticket?.company_name}}</div>
+                <div style="font-size: 15px" class="hidden-xs">
+                  <b>Company Name</b>
+                </div>
+                <div style="font-size: 15px" class="ng-binding">
+                  {{ reviewInfo?.onwardticket?.company_name }}
+                </div>
               </div>
               <div class="reviewPadding">
-                <div style="font-size:15px"><b>Bus</b></div>
-                <div style="font-size:15px" class="ng-binding">{{reviewInfo?.onwardticket?.bus_title}}</div>
-              </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 row sameHeightColumn" style="padding-right: 0">
-              <div class="reviewPadding">
-                <div style="font-size:15px"><b>Depart</b></div>
-                <div style="font-size:15px" class="ng-binding">{{reviewInfo?.onwardticket?.source_city}}</div>
-              </div>
-              <div class="reviewPadding">
-                <div style="font-size:15px"><b>Boarding</b></div>
-                <div style="font-size:15px" class="ng-binding">{{reviewInfo?.onwardticket?.boardingPointname}}</div>
+                <div style="font-size: 15px"><b>Bus</b></div>
+                <div style="font-size: 15px" class="ng-binding">
+                  {{ reviewInfo?.onwardticket?.bus_title }}
+                </div>
               </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 row sameHeightColumn" style="padding-right: 0">
+            <div
+              class="col-lg-2 col-md-2 col-sm-4 col-xs-6 row sameHeightColumn"
+              style="padding-right: 0"
+            >
               <div class="reviewPadding">
-                <div style="font-size:15px"><b>Arrive</b></div>
-                <div style="font-size:15px" class="ng-binding">{{reviewInfo?.onwardticket?.dest_city}}</div>
+                <div style="font-size: 15px"><b>Depart</b></div>
+                <div style="font-size: 15px" class="ng-binding">
+                  {{ reviewInfo?.onwardticket?.source_city }}
+                </div>
               </div>
               <div class="reviewPadding">
-                <div style="font-size:15px"><b>Dropping</b></div>
-                <div style="font-size:15px" class="ng-binding">{{reviewInfo?.onwardticket?.droppingPointname}}</div>
+                <div style="font-size: 15px"><b>Boarding</b></div>
+                <div style="font-size: 15px" class="ng-binding">
+                  {{ reviewInfo?.onwardticket?.boardingPointname }}
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-lg-2 col-md-2 col-sm-4 col-xs-6 row sameHeightColumn"
+              style="padding-right: 0"
+            >
+              <div class="reviewPadding">
+                <div style="font-size: 15px"><b>Arrive</b></div>
+                <div style="font-size: 15px" class="ng-binding">
+                  {{ reviewInfo?.onwardticket?.dest_city }}
+                </div>
+              </div>
+              <div class="reviewPadding">
+                <div style="font-size: 15px"><b>Dropping</b></div>
+                <div style="font-size: 15px" class="ng-binding">
+                  {{ reviewInfo?.onwardticket?.droppingPointname }}
+                </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-7 sameHeightColumn">
-
               <div class="row reviewPadding">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 padding-0" style="font-size:16px"><b>Total:</b></div>
-                <div class="col-lg-8 col-md-4 col-sm-6 col-xs-8" style="text-align:right;font-size:16px;padding-left:0">
-                  <b class="ng-binding">{{reviewInfo?.totalTicketPrice| number}}</b>
+                <div
+                  class="col-lg-4 col-md-4 col-sm-6 col-xs-4 padding-0"
+                  style="font-size: 16px"
+                >
+                  <b>Total:</b>
+                </div>
+                <div
+                  class="col-lg-8 col-md-4 col-sm-6 col-xs-8"
+                  style="text-align: right; font-size: 16px; padding-left: 0"
+                >
+                  <b class="ng-binding">{{
+                    reviewInfo?.totalTicketPrice | number
+                  }}</b>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
 
-        <div class="row" *ngIf="reviewInfo.returnticket" style="margin-top:10px">
-          <div class="row" style="font-size: 15px;font-weight: 600;margin-bottom: 10px">
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12  padding-0">
-              <span class="crossBorderSpan" style="background-color: #ffe7fe"><span style="font-size:18px">Return</span>
-                | <span>{{reviewInfo.returnticket.source_city}} to {{reviewInfo.returnticket.dest_city}}</span> |
-                <span>{{reviewInfo.returnticket.booking_date|date:'dd MMM yyyy'}}</span></span>
+        <div
+          class="row"
+          *ngIf="reviewInfo.returnticket"
+          style="margin-top: 10px"
+        >
+          <div
+            class="row"
+            style="font-size: 15px; font-weight: 600; margin-bottom: 10px"
+          >
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0">
+              <span class="crossBorderSpan" style="background-color: #ffe7fe"
+                ><span style="font-size: 18px">Return</span> |
+                <span
+                  >{{ reviewInfo.returnticket.source_city }} to
+                  {{ reviewInfo.returnticket.dest_city }}</span
+                >
+                |
+                <span>{{
+                  reviewInfo.returnticket.booking_date | date : "dd MMM yyyy"
+                }}</span></span
+              >
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="text-align: right">
-              <span style="padding-right: 5px">Seat(s):</span><span
-                *ngFor="let eachseat of reviewInfo.returnticket.passenger">{{eachseat.seat_name}}{{$last ? '' : ',
-                '}}</span>
+            <div
+              class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
+              style="text-align: right"
+            >
+              <span style="padding-right: 5px">Seat(s):</span
+              ><span *ngFor="let eachseat of reviewInfo.returnticket.passenger"
+                >{{ eachseat.seat_name
+                }}{{
+                  $last
+                    ? ""
+                    : ",
+                "
+                }}</span
+              >
             </div>
           </div>
-          <div class="row" style="margin-top: 10px;padding-bottom: 5px;display: flex;flex-wrap: wrap">
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 padding-left-0 sameHeightColumn" style="text-align: center">
-              <img src="../assets/bus.svg" alt="bus" style="width: 65px;opacity: 0.4" />
+          <div
+            class="row"
+            style="
+              margin-top: 10px;
+              padding-bottom: 5px;
+              display: flex;
+              flex-wrap: wrap;
+            "
+          >
+            <div
+              class="col-lg-2 col-md-2 col-sm-4 col-xs-4 padding-left-0 sameHeightColumn"
+              style="text-align: center"
+            >
+              <img
+                src="../assets/bus.svg"
+                alt="bus"
+                style="width: 65px; opacity: 0.4"
+              />
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 sameHeightColumn padding-left-0">
+            <div
+              class="col-lg-3 col-md-3 col-sm-6 col-xs-6 sameHeightColumn padding-left-0"
+            >
               <div class="reviewPadding">
-                <div style="font-size:15px"><b>Company Name</b></div>
-                <div style="font-size:15px">{{reviewInfo.returnticket.company_name}}</div>
+                <div style="font-size: 15px"><b>Company Name</b></div>
+                <div style="font-size: 15px">
+                  {{ reviewInfo.returnticket.company_name }}
+                </div>
               </div>
               <div class="reviewPadding">
-                <div style="font-size:15px"><b>Bus</b></div>
-                <div style="font-size:15px">{{reviewInfo.returnticket.bus_title}}</div>
-              </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 sameHeightColumn" style="padding-right: 0">
-              <div class="reviewPadding">
-                <div style="font-size:15px"><b>Depart</b></div>
-                <div style="font-size:15px">{{reviewInfo.returnticket.source_city}}</div>
-              </div>
-              <div class="reviewPadding">
-                <div style="font-size:15px"><b>Boarding</b></div>
-                <div style="font-size:15px">{{reviewInfo.returnticket.boardingPointname}}</div>
+                <div style="font-size: 15px"><b>Bus</b></div>
+                <div style="font-size: 15px">
+                  {{ reviewInfo.returnticket.bus_title }}
+                </div>
               </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-3 sameHeightColumn" style="padding-right: 0">
+            <div
+              class="col-lg-2 col-md-2 col-sm-4 col-xs-4 sameHeightColumn"
+              style="padding-right: 0"
+            >
               <div class="reviewPadding">
-                <div style="font-size:15px"><b>Arrive</b></div>
-                <div style="font-size:15px">{{reviewInfo.returnticket.dest_city}}</div>
+                <div style="font-size: 15px"><b>Depart</b></div>
+                <div style="font-size: 15px">
+                  {{ reviewInfo.returnticket.source_city }}
+                </div>
               </div>
               <div class="reviewPadding">
-                <div style="font-size:15px"><b>Dropping</b></div>
-                <div style="font-size:15px">{{reviewInfo.returnticket.droppingPointname}}</div>
+                <div style="font-size: 15px"><b>Boarding</b></div>
+                <div style="font-size: 15px">
+                  {{ reviewInfo.returnticket.boardingPointname }}
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-lg-2 col-md-2 col-sm-4 col-xs-3 sameHeightColumn"
+              style="padding-right: 0"
+            >
+              <div class="reviewPadding">
+                <div style="font-size: 15px"><b>Arrive</b></div>
+                <div style="font-size: 15px">
+                  {{ reviewInfo.returnticket.dest_city }}
+                </div>
+              </div>
+              <div class="reviewPadding">
+                <div style="font-size: 15px"><b>Dropping</b></div>
+                <div style="font-size: 15px">
+                  {{ reviewInfo.returnticket.droppingPointname }}
+                </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-7 sameHeightColumn">
-              <div class="row" style="padding:5px 0">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding-0" style="font-size:16px"><b>Total: </b></div>
-                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="text-align:right;font-size:16px;padding-left:0">
-                  <b>{{reviewInfo.returnticket.currency}} {{reviewInfo.returnticket.total}}</b>
+              <div class="row" style="padding: 5px 0">
+                <div
+                  class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding-0"
+                  style="font-size: 16px"
+                >
+                  <b>Total: </b>
+                </div>
+                <div
+                  class="col-lg-8 col-md-8 col-sm-8 col-xs-8"
+                  style="text-align: right; font-size: 16px; padding-left: 0"
+                >
+                  <b
+                    >{{ reviewInfo.returnticket.currency }}
+                    {{ reviewInfo.returnticket.total }}</b
+                  >
                 </div>
               </div>
             </div>
@@ -766,32 +1510,52 @@
 
         <div class="row reviewPayable">
           <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">Grand Total</div>
-          <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6 ng-binding" style="text-align: right">KES<span
-              style="padding-left:5px" class="ng-binding">{{reviewInfo?.totalTicketPrice| number}}</span></div>
+          <div
+            class="col-lg-6 col-md-6 col-xs-6 col-sm-6 ng-binding"
+            style="text-align: right"
+          >
+            KES<span style="padding-left: 5px" class="ng-binding">{{
+              reviewInfo?.totalTicketPrice | number
+            }}</span>
+          </div>
         </div>
         <div class="row" style="text-align: right">
           <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-            <button class="btn view-seats" (click)="continue()"
-              style="margin-right: 0px !important;float: right;">CONTINUE <i
-                class="fa-solid fa-chevron-right"></i></button>
+            <button
+              class="btn view-seats"
+              (click)="continue()"
+              style="margin-right: 0px !important; float: right"
+            >
+              CONTINUE <i class="fa-solid fa-chevron-right"></i>
+            </button>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-<div class="modal fade" bsModal #loginModal="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+<div
+  class="modal fade"
+  bsModal
+  #loginModal="bs-modal"
+  [config]="{ backdrop: 'static' }"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-static-name"
+>
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="dialog-static-name" class="modal-title pull-left">Join Kidiaone</h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="loginModal.hide()">
+        <h4 id="dialog-static-name" class="modal-title pull-left">
+          Join BUSCAR
+        </h4>
+        <button
+          type="button"
+          class="btn-close close pull-right"
+          aria-label="Close"
+          (click)="loginModal.hide()"
+        >
           <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
       </div>
